@@ -7,6 +7,11 @@ namespace Sozluk.Infrastructure.Persistence.Context
     public class SozlukContext : DbContext
     {
         public const string DEFAULT_SCHEMA = "dbo";
+
+        public SozlukContext()
+        {
+        }
+
         public SozlukContext(DbContextOptions dbContextOptions)
             : base(dbContextOptions)
         {
@@ -22,6 +27,20 @@ namespace Sozluk.Infrastructure.Persistence.Context
         public DbSet<EntryCommentVote> EntryCommentVotes { get; set; }
         public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
         public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //For Design Time Operations! For Example Migrations.
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connStr = "Data Source=localhost; Initial Catalog=sozlukdb; Persist Security Info=True; User ID=sa; Password=1478963Se";
+                optionsBuilder.UseSqlServer(connStr, opt =>
+                {
+                    opt.EnableRetryOnFailure();
+                });
+            }
+            base.OnConfiguring(optionsBuilder);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

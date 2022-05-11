@@ -14,11 +14,12 @@ public class EntryCommentEntityConfiguration : BaseEntityConfiguration<Api.Domai
 
         builder.HasOne(i => i.CreatedUser)
             .WithMany(i => i.EntryComments)
-            .HasForeignKey(i => i.CreatedById);
+            .HasForeignKey(i => i.CreatedById)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(i => i.Entry)
             .WithMany(i => i.EntryComments)
-            .HasForeignKey(i => i.Entry);
+            .HasForeignKey(i => i.EntryId);
     }
 }
 
