@@ -8,12 +8,12 @@ namespace Sozluk.Infrastructure.Persistence.Repositories;
 public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
 {
     #region Variables
-    private readonly SozlukContext dbContext;
+    private readonly DbContext dbContext;
     protected DbSet<TEntity> entity => dbContext.Set<TEntity>();
     #endregion
 
     #region Constructor
-    public GenericRepository(SozlukContext sozlukContext)
+    public GenericRepository(DbContext sozlukContext)
     {
         this.dbContext = sozlukContext ?? throw new ArgumentNullException(nameof(sozlukContext));
     }
@@ -106,7 +106,7 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
 
     public virtual bool DeleteRange(Expression<Func<TEntity, bool>> predicate)
     {
-        dbContext.RemoveRange(predicate);
+        dbContext.RemoveRange(entity.Where(predicate));
         return dbContext.SaveChanges() > 0;
     }
 

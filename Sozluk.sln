@@ -37,7 +37,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sozluk.Projections.VoteServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sozluk.WebApp", "src\Clients\BlazorWeb\Sozluk.WebApp\Sozluk.WebApp.csproj", "{78294E8C-5B4B-4B08-8786-F2143637D65F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sozluk.Projections.UserService", "src\Projections\Sozluk.Projections.UserService\Sozluk.Projections.UserService.csproj", "{0D512AD0-3084-42F6-88D4-306EFA337024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sozluk.Projections.UserService", "src\Projections\Sozluk.Projections.UserService\Sozluk.Projections.UserService.csproj", "{0D512AD0-3084-42F6-88D4-306EFA337024}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4AC29DAF-A17F-47F5-B49B-13FE986767AC}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
