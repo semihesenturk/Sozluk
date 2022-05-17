@@ -12,8 +12,8 @@ using Sozluk.Infrastructure.Persistence.Context;
 namespace Sozluk.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(SozlukContext))]
-    [Migration("20220510074417_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20220517100742_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
