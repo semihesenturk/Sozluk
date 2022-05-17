@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Sozluk.Application\Sozluk.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Sozluk.Infrastructure.Persistence\Sozluk.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 

@@ -3,8 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Sozluk.Application.Extensions
-{
+namespace Sozluk.Application.Extensions;
     public static class Registration
     {
         public static IServiceCollection AddApplicationRegistration(this IServiceCollection services)
@@ -18,4 +17,3 @@ namespace Sozluk.Application.Extensions
             return services;
         }
     }
-}
