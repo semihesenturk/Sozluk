@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Sozluk.Application.Interfaces.Repositories;
 using Sozluk.Common.Infrastructure;
 using Sozluk.Common.Infrastructure.Exceptions;
 using Sozluk.Common.Models.Queries;
 using Sozluk.Common.Models.RequestModels;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Sozluk.Application.Features.Commands.User;
 
@@ -43,11 +47,33 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUs
 
         var result = mapper.Map<LoginUserViewModel>(dbUser);
 
-        result.Token = "";
+        var claims = new Claim[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, dbUser.Id.ToString()),
+            new Claim(ClaimTypes.Email, dbUser.EmailAddress),
+            new Claim(ClaimTypes.Name, dbUser.UserName),
+            new Claim(ClaimTypes.GivenName, dbUser.FirstName),
+            new Claim(ClaimTypes.Surname, dbUser.LastName)
+        };
+
+        result.Token = GenerateToken(claims);
 
         return result;
     }
 
+    private string GenerateToken(Claim[] claims)
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["AuthConfig:Secret"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var expiry = DateTime.Now.AddDays(10);
 
+        var token = new JwtSecurityToken(
+            claims: claims,
+            expires: expiry,
+            signingCredentials: creds,
+            notBefore: DateTime.Now);
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
 }
 
