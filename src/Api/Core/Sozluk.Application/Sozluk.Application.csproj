@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Commands\Entry\Create\" />
-    <Folder Include="Features\Commands\User\ConfirmEmail\" />
     <Folder Include="Features\Queries\" />
   </ItemGroup>
 

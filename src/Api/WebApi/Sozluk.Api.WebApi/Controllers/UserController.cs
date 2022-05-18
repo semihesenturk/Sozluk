@@ -6,7 +6,7 @@ using Sozluk.Common.Models.RequestModels;
 namespace Sozluk.Api.WebApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class UserController : ControllerBase
+public class UserController : BaseController
 {
     #region Variables
     private readonly IMediator _mediator;
