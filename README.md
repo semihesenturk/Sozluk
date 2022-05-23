@@ -9,6 +9,7 @@ Used Technologies
 - EF Core CodeFirst Implementation
 - Generic Repository Pattern
 - CQRS Medator Implementation (with MediatR)
+- Microservice Architecture
 - EventSource (RabbitMQ)
 - AutoMapper
 - Fluent Validation
