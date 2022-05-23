@@ -9,3 +9,5 @@ Used Technologies
 - Generic Repository Pattern
 - CQRS Medator Implementation (with MediatR)
 - EventSource (RabbitMQ)
+- AutoMapper
+- Fluent Validation
