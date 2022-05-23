@@ -12,3 +12,4 @@ Used Technologies
 - EventSource (RabbitMQ)
 - AutoMapper
 - Fluent Validation
+- Bogus Fake Data Generator
