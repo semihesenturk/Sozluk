@@ -26,6 +26,9 @@ public static class Registration
         seedData.SeedAsync(configuration).GetAwaiter().GetResult();
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IEntryRepository, EntryRepository>();
+        services.AddScoped<IEntryCommentRepository, EntryCommentRepository>();
+        services.AddScoped<IEmailConfirmationRepository, EmailConfirmationRepository>();
 
         return services;
     }
