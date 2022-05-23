@@ -8,7 +8,7 @@ Used Technologies
 - Clean Architecture (Onion Architecture)
 - EF Core CodeFirst Implementation
 - Generic Repository Pattern
-- CQRS Medator Implementation (with MediatR)
+- CQRS Mediator Implementation (with MediatR)
 - Microservice Architecture
 - EventSource (RabbitMQ)
 - AutoMapper
